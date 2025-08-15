@@ -4,8 +4,104 @@
   "segments": [
     {
       "sentences": [
-        "Once upon a time, there was an e‑commerce store.",
+        "Once upon a time, there was an e-commerce store.",
         "They used an external payment service to handle orders."
+      ]
+    },
+    {
+      "sentences": [
+        "It means the payment service processes a payment first.",
+        "And only after that, the store sends a confirmation email to the customer."
+      ]
+    },
+    {
+      "sentences": [
+        "Yet they had only a tiny number of customers.",
+        "So they checked for new payments every hour through HTTP polling."
+      ]
+    },
+    {
+      "sentences": [
+        "Imagine polling as repeatedly asking a server for updates.",
+        "But one day, their store became extremely popular because of a limited flash sale."
+      ]
+    },
+    {
+      "sentences": [
+        "And they received a massive number of orders in a short period.",
+        "Although explosive growth is a good problem to have, they sent email notifications to customers extremely late because of delays in polling."
+      ]
+    },
+    {
+      "sentences": [
+        "It was frustrating.",
+        "So they set up websockets."
+      ]
+    },
+    {
+      "sentences": [
+        "Think of the websockets as a way for the client and server to communicate in real-time, in both directions.",
+        "But it needs extra work because of connection management, server scaling, and monitoring."
+      ]
+    },
+    {
+      "sentences": [
+        "Thus increasing the operational efforts and resource usage.",
+        "They wanted a simple way to solve this problem."
+      ]
+    },
+    {
+      "sentences": [
+        "So they set up webhooks.",
+        "Imagine webhooks as a way of sending messages to an external service when specific events happen."
+      ]
+    },
+    {
+      "sentences": [
+        "A webhook isn’t a protocol, but a communication pattern.",
+        "It has 3 parts: Sender, Event, and Receiver."
+      ]
+    },
+    {
+      "sentences": [
+        "The external payment service sends an event to the e-commerce store when the customer makes a successful payment.",
+        "And the e-commerce store then sends a confirmation email to the customer."
+      ]
+    },
+    {
+      "sentences": [
+        "They set up a separate API endpoint on the e-commerce store to handle webhook events.",
+        "And registered its URL with the payment service."
+      ]
+    },
+    {
+      "sentences": [
+        "Here’s the webhook workflow: The user tries to buy something from the store, and the user then gets sent to the payment service.",
+        "The payment service creates a webhook event upon successful payment, and sends an HTTP POST request to the store’s webhook URL."
+      ]
+    },
+    {
+      "sentences": [
+        "The store validates the payment and emails the customer to confirm the purchase.",
+        "Also the store notifies the customer in case the payment is invalid."
+      ]
+    },
+    {
+      "sentences": [
+        "Webhooks let systems communicate in real time via HTTP.",
+        "Yet there’s a risk of fake data or spam reaching the webhook endpoint as it’s a public API."
+      ]
+    },
+    {
+      "sentences": [
+        "So it’s necessary to set up extra security using signature verification for safety.",
+        "Besides an event delivery could fail because of network issues, so it’s necessary to retry with exponential backoff until it succeeds."
+      ]
+    },
+    {
+      "sentences": [
+        "But a retry might cause duplicate action, such as emailing the customer twice.",
+        "So it’s necessary to set up the webhook API endpoint with idempotency."
       ]
     }
   ]

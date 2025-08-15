@@ -8,6 +8,9 @@ header {
     font-weight: 700;
     line-height: 20px;
 }
+h1, h2 {
+    margin: 0
+}
 h2 {
     color: #868787;
     font-size: 18px;
@@ -23,6 +26,8 @@ main {
     max-width: 800px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
+}
+audio {
+    align-self: center;
 }
