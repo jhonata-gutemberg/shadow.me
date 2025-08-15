@@ -1,26 +1,40 @@
+const header = document.querySelector("main")
 const main = document.querySelector("main")
-fetch('./scripts/segments.json')
-  .then(res => res.json())
-  .then(data => {
-    data.segments.forEach(segment => {
-        const segmentDiv = document.createElement("div")
-        const div = document.createElement("div")
-        const firstSentence = document.createElement("p")
-        const secondSentence = document.createElement("p")
-        const audio = document.createElement("audio")
-        const source = document.createElement("source")
 
-        firstSentence.innerHTML = "\"" + segment.firstSentence
-        secondSentence.innerHTML = segment.secondSentence + "\""
-        div.appendChild(firstSentence)
-        div.appendChild(secondSentence)
-        source.setAttribute("src", "./audio-segments/01.mp3")
-        audio.setAttribute("controls", true)
-        audio.appendChild(source)
-        segmentDiv.className = "segment"
-        segmentDiv.appendChild(div)
-        segmentDiv.appendChild(audio)
+function showArticle(article) {
+    header.innerHTML = ""
+    main.innerHTML = ""
+    fetch(`./articles/${article}/transcripts/transcript.json`)
+      .then(res => res.json())
+      .then(transcript => {
+        const h1 = document.createElement("h1")
+        const h2 = document.createElement("h2")
+        h1.innerHTML = transcript.title
+        h2.innerHTML = transcript.subtitle
+        header.append(h1)
+        header.append(h2)
 
-        main.appendChild(segmentDiv)
-    })
-  });
+        const segments = transcript.segments
+        for (let i = 0; i < segments.length; i++) {
+            const segmentDiv = document.createElement("div")
+            const div = document.createElement("div")
+            const audio = document.createElement("audio")
+            const source = document.createElement("source")
+
+            const segment = segments[i]
+            segment.sentences.forEach(sentence => {
+                const p = document.createElement("p")
+                p.innerHTML = sentence
+                div.appendChild(p)
+            })
+            source.setAttribute("src", `./articles/${article}/audios/${i}.mp3`)
+            audio.setAttribute("controls", true)
+            audio.appendChild(source)
+            segmentDiv.className = "segment"
+            segmentDiv.appendChild(div)
+            segmentDiv.appendChild(audio)
+
+            main.appendChild(segmentDiv)
+        }
+      });
+}
