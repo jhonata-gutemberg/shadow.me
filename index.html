@@ -5,70 +5,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="src/styles/style.css">
     </header>
     <body>
-        <style>
-            body {
-                font-family: "Roboto Slab", serif;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            header {
-                font-weight: 700;
-                line-height: 20px;
-            }
-            h2 {
-                color: #868787;
-                font-size: 18px;
-            }
-            main {
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px 0 20px 0;
-            }
-            .segment {
-                max-width: 800px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-        </style>
         <header>
             <h1>How Do Webhooks Work</h1>
             <h2>Break Into Webhooks Pattern</h2>
         </header>
         <main></main>
-        <script>
-            const main = document.querySelector("main")
-            fetch('./scripts/segments.json')
-              .then(res => res.json())
-              .then(data => {
-                data.segments.forEach(segment => {
-                    const segmentDiv = document.createElement("div")
-                    const div = document.createElement("div")
-                    const firstSentence = document.createElement("p")
-                    const secondSentence = document.createElement("p")
-                    const audio = document.createElement("audio")
-                    const source = document.createElement("source")
-
-                    firstSentence.innerHTML = "\"" + segment.firstSentence
-                    secondSentence.innerHTML = segment.secondSentence + "\""
-                    div.appendChild(firstSentence)
-                    div.appendChild(secondSentence)
-                    source.setAttribute("src", "./audio-segments/01.mp3")
-                    audio.setAttribute("controls", true)
-                    audio.appendChild(source)
-                    segmentDiv.className = "segment"
-                    segmentDiv.appendChild(div)
-                    segmentDiv.appendChild(audio)
-
-                    main.appendChild(segmentDiv)
-                })
-              });
-        </script>
+        <script src="src/main.js"></script>
     </body>
 </html>
