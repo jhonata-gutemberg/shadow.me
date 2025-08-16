@@ -1,12 +1,27 @@
 body {
     font-family: "Roboto Slab", serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 200px auto;
+    gap: 20px;
+}
+nav {
+    grid-column: 1;
+
+    button {
+        border: 0;
+        background: none;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    button:hover {
+        color: blue;
+    }
 }
 header {
     font-weight: 700;
-    line-height: 20px;
+    align-self: start;
+    margin-bottom: 40px;
 }
 h1, h2 {
     margin: 0
@@ -16,9 +31,11 @@ h2 {
     font-size: 18px;
 }
 main {
+    grid-column: 2;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     padding: 20px 0 20px 0;
 }
@@ -27,7 +44,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-audio {
-    align-self: center;
+
+    audio {
+        align-self: center;
+    }
 }
