@@ -1,4 +1,4 @@
-![Shadowing](assets/shadowing.png)
+![Shadowing](docs/assets/shadowing.png)
 
 ## 🗣️ What Is Shadowing?
 Shadowing is a technique where you listen to audio in your target language and speak along with it simultaneously, mimicking the speaker's pronunciation, rhythm, and intonation as closely as possible.
